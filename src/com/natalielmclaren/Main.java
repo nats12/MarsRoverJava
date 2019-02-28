@@ -6,15 +6,26 @@ import java.util.Scanner;
 
 public class Main {
 
-    static Grid grid = new Grid();
     static Scanner scanner = new Scanner(System.in);
     static Main main = new Main();
+    int gridSize[] = new int[2];
 
     /**
      *
      * @param args
      */
     public static void main(String[] args) {
+
+        System.out.println("Enter the grid size: ");
+        String enteredGridSize = getInputGridSize();
+
+        String splitGridSize[] = enteredGridSize.split(" ");
+
+
+        main.gridSize[0] = Integer.parseInt(splitGridSize[0]);
+        main.gridSize[1] = Integer.parseInt(splitGridSize[1]);
+
+        Grid grid = new Grid(main.gridSize);
 
         int numberOfRovers = getInputNumberOfRovers();
 
@@ -34,7 +45,7 @@ public class Main {
             String command = splitData[3];
 
             Rover rover = createRover(x, y, direction, command);
-            addRoverToGrid(rover);
+            addRoverToGrid(rover, grid);
 
         }
 
@@ -43,6 +54,13 @@ public class Main {
         navigateRovers(rovers);
     }
 
+    /**
+     *
+     */
+    public static String getInputGridSize() {
+
+        return scanner.nextLine();
+    }
     /**
      *
      * @param rovers
@@ -105,7 +123,7 @@ public class Main {
      *
      * @param rover
      */
-    public static void addRoverToGrid(Rover rover) {
+    public static void addRoverToGrid(Rover rover, Grid grid) {
 
         grid.addRover(rover);
     }

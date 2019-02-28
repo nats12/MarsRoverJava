@@ -4,9 +4,11 @@ import java.util.ArrayList;
 
 public class Grid {
 
+    int[] size;
     ArrayList<Rover> rovers;
 
-    public Grid() {
+    public Grid(int[] _size) {
+        this.size = _size;
         this.rovers = new ArrayList<Rover>();
     }
 
@@ -16,5 +18,9 @@ public class Grid {
 
     public ArrayList<Rover> getRovers() {
         return this.rovers;
+    }
+
+    public int[] getSize() {
+        return size;
     }
 }
