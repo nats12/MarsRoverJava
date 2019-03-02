@@ -46,6 +46,7 @@ public class Main {
 
             Rover rover = createRover(x, y, direction, command);
             addRoverToGrid(rover, grid);
+            rover.tellRoverOfGridSize(grid.getSize());
 
         }
 

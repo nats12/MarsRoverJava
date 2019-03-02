@@ -9,6 +9,7 @@ public class Rover {
     private int y = 0;
     private char direction = 'N';
     private String command;
+    private int[] positionLimit = new int[2];
 
     /**
      *
@@ -119,5 +120,19 @@ public class Rover {
         } else if (this.direction == 'W') {
             this.x--;
         }
+
+        this.x = (this.x + this.positionLimit[0]) % this.positionLimit[0];
+        this.y = (this.y + this.positionLimit[1]) % this.positionLimit[1];
+    }
+
+    /**
+     *
+     * @param gridSize
+     */
+    public void tellRoverOfGridSize(int[] gridSize) {
+
+        // Add one to cater for 0 index.
+        this.positionLimit[0] = gridSize[0] + 1;
+        this.positionLimit[1] =  gridSize[1] + 1;
     }
 }
